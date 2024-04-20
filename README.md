@@ -1,6 +1,9 @@
 ### Update the Readme and add `Yarn configuration` in it.
 # Getting Started with Create React App
 
+# Screenshot of the tables: 
+![manufac_assign_tables_ss](https://github.com/rudrcodes/RudranshManuFac-Assign/assets/71976527/843b9d7c-d2a3-44fc-aed8-2766e6eedd60)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
