@@ -1,23 +1,18 @@
+// Gamma = (Ash * Hue) / Magnesium
 
 import jsonData from "../Wine-Data.json"
 
-
 const mp = new Map();
 for (let i = 0; i < jsonData.length; i++) {
+    let calcGammValue: number = (jsonData[i].Ash * jsonData[i].Hue) / jsonData[i].Magnesium
     let obj = jsonData[i];
     if (mp.has(obj.Alcohol)) {
-        mp.get(obj.Alcohol).push(obj.Flavanoids);
+        mp.get(obj.Alcohol).push(calcGammValue);
     } else {
-        mp.set(obj.Alcohol, [obj["Flavanoids"]])
+        mp.set(obj.Alcohol, [calcGammValue])
     }
 }
-// jsonData.map((obj) => {
-//     if (mp.has(obj.Alcohol)) {
-//         mp.get(obj.Alcohol).push(obj.Flavanoids);
-//     } else {
-//         mp.set(obj.Alcohol, [obj["Flavanoids"]])
-//     }
-// })
+
 
 //we have to sort the array of each class
 mp.forEach((value, key) => {
@@ -26,7 +21,7 @@ mp.forEach((value, key) => {
 
 // console.log("Map: ", mp)
 
-export const calcMean = (): number[] => {
+export const gammaMean = (): number[] => {
     //create a map to keep track of means of diferrent classes of Alchols (“Flavanoids”)
     //meanArray?
     let meanArray: number[] = new Array(mp.size).fill(0);
@@ -44,7 +39,7 @@ export const calcMean = (): number[] => {
     return meanArray;
 }
 
-export const calcMedian = (): number[] => {
+export const gammaMedian = (): number[] => {
     let medianArray: number[] = new Array(mp.size).fill(0);
 
     mp.forEach((value, key) => {
@@ -65,7 +60,7 @@ export const calcMedian = (): number[] => {
 
 }
 
-export const calcMode = (): number[] => {
+export const gammaMode = (): number[] => {
     let modeArray: number[] = new Array(mp.size).fill(0);
 
     let freqArrMap: Map<number, number>[] = new Array(mp.size).fill(new Map());
@@ -91,13 +86,10 @@ export const calcMode = (): number[] => {
         indiMap.forEach((value, key) => {
             if (frqCnt <= value) {
                 frqCnt = value;
-                frqNumber = Math.max(frqNumber, key)
-                // frqNumber = frqNumber == -Infinity ? 0 : frqNumber
+                frqNumber = parseFloat(Math.max(frqNumber, key).toFixed(3))
             }
         })
         modeArray[index] = frqNumber
-        // console.log(frqNumber, frqCnt)
-        // console.log("indiMap: ", indiMap)
     })
 
     return modeArray;
@@ -107,6 +99,5 @@ export const calcMode = (): number[] => {
 
 
 //exporting the whole map
-// console.log("mainMap 2: ", mp)
 
 export default mp

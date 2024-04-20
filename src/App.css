@@ -1,7 +1,19 @@
 .App {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #202020;
+  flex-direction: column;
+  gap: 2;
+  height: 100%;
 }
-
+.container {
+  /* background-color: rgb(224, 127, 127); */
+  color: white;
+  width: 60%;
+  height: 100vh;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
