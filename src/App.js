@@ -5,7 +5,6 @@ import { SecondTable } from './components/SecondTable';
 
 function App() {
 
-
   return (
     <div className='App'>
       <div className='container'>
